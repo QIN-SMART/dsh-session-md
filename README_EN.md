@@ -18,8 +18,11 @@
 
 ## Install
 
+Both channels install the same code (verified file by file):
+
 ```sh
-dsh plugin --profile web add github:QIN-SMART/dsh-session-md
+dsh plugin --profile web add dsh-session-md                        # npm (recommended: pinned versions)
+dsh plugin --profile web add github:QIN-SMART/dsh-session-md       # GitHub (tracks the repository)
 ```
 
 The package declares `dsh.bundle.patch`, so `add` registers the loader entry for you — no manual `cordis.yml` edit.

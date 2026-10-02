@@ -183,10 +183,17 @@ console.log(`✓ topics: ${TOPICS.join(', ')}`);
 if (RELEASE_TAG) {
   const changelog = readFileSync(join(ROOT, 'CHANGELOG.md'), 'utf8');
   const version = RELEASE_TAG.replace(/^v/, '');
-  const start = changelog.indexOf(`## ${version}`);
+  // Accept both heading dialects: `## 1.2.3 - date` and `## [1.2.3] - date`.
+  const headings = [`## [${version}]`, `## ${version}`];
+  const candidates = headings.map((heading) => changelog.indexOf(heading)).filter((index) => index !== -1);
+  const start = candidates.length === 0 ? -1 : Math.min(...candidates);
   const body = start === -1
     ? changelog.slice(0, 1500)
-    : changelog.slice(start, (() => { const next = changelog.indexOf('\n## ', start + 1); return next === -1 ? undefined : next; })()).trim();
+    : changelog
+      .slice(start, (() => { const next = changelog.indexOf('\n## ', start + 1); return next === -1 ? undefined : next; })())
+      .replace(/\n\[[^\]]+\]:[^\n]*\s*$/, '')
+      .trim();
+  if (start === -1) console.log(`! CHANGELOG 里没有 ${version} 的段落，Release 正文退回文件开头 1500 字`);
 
   // 轻量 tag 指向本次提交
   let tagRef = null;

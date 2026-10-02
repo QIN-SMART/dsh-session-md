@@ -17,8 +17,11 @@ English → [README_EN.md](README_EN.md)
 
 ## 安装
 
+两种装法等价，装到的代码逐文件一致（都实测过）：
+
 ```sh
-dsh plugin --profile web add github:QIN-SMART/dsh-session-md
+dsh plugin --profile web add dsh-session-md                        # npm（推荐，版本冻结、可钉版本）
+dsh plugin --profile web add github:QIN-SMART/dsh-session-md       # GitHub（跟仓库源码走）
 ```
 
 插件声明了 `dsh.bundle.patch`，`add` 会自动把 `session-md` 这一行写进 profile 的 patch 层，无需手工编辑

@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>dsh-session-md demo</title>
+<style>
+:root{color-scheme:light dark;--bg:#fff;--fg:#1a1a1a;--muted:#5c5c5c;--line:#e3e3e3;--code-bg:#f6f7f9;--quote:#f4f5f7;--accent:#2652d6}
+@media (prefers-color-scheme:dark){:root{--bg:#1c1d1f;--fg:#e8e8e8;--muted:#a0a0a0;--line:#333438;--code-bg:#26272b;--quote:#242528;--accent:#7aa2ff}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif}
+main{max-width:860px;margin:0 auto;padding:48px 28px 96px}
+h1{font-size:28px;line-height:1.35;margin:0 0 20px}
+h2{font-size:22px;line-height:1.4;margin:44px 0 14px;padding-top:14px;border-top:1px solid var(--line)}
+h3{font-size:18px;margin:28px 0 10px}
+h4,h5,h6{font-size:16px;margin:20px 0 8px}
+p{margin:12px 0}
+a{color:var(--accent)}
+code{font:13px/1.5 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:var(--code-bg);padding:2px 5px;border-radius:4px}
+pre{background:var(--code-bg);border:1px solid var(--line);border-radius:8px;padding:12px 14px;overflow:auto}
+pre code{background:none;padding:0;font-size:12.5px;white-space:pre-wrap;word-break:break-word}
+table{border-collapse:collapse;margin:16px 0;width:100%;font-size:14px}
+th,td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:var(--quote);font-weight:600}
+blockquote{margin:14px 0;padding:10px 14px;background:var(--quote);border-left:3px solid var(--line);color:var(--muted)}
+ul,ol{margin:12px 0;padding-left:26px}
+li{margin:4px 0}
+li.task{list-style:none;margin-left:-22px}
+hr{border:none;border-top:1px solid var(--line);margin:28px 0}
+details{margin:14px 0;border:1px solid var(--line);border-radius:8px;padding:8px 14px;background:linear-gradient(0deg,transparent,transparent)}
+details>summary{cursor:pointer;color:var(--muted);font-size:14px}
+details[open]>summary{margin-bottom:10px}
+.toolbar{position:sticky;top:0;display:flex;justify-content:flex-end;gap:8px;padding:10px 28px;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+.toolbar button{font:13px/1 inherit;color:var(--fg);background:var(--code-bg);border:1px solid var(--line);border-radius:6px;padding:6px 10px;cursor:pointer}
+@media print{
+  :root{--bg:#fff;--fg:#000;--muted:#444;--line:#bbb;--code-bg:#f4f4f4;--quote:#f7f7f7;--accent:#000}
+  .toolbar{display:none}
+  main{max-width:none;padding:0}
+  body{font-size:11.5pt}
+  a{text-decoration:none}
+  details{border-color:#bbb;break-inside:avoid}
+  details>summary{font-weight:600}
+  details>*:not(summary){display:block !important}
+  details::details-content{content-visibility:visible !important}
+  h2{break-after:avoid}
+  pre,table,blockquote{break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<div class="toolbar"><button id="toggle-details" type="button">全部展开</button></div>
+<main>
+<h1>Kuramoto 临界指数的 D 维推导</h1>
+<table><thead><tr><th>项目</th><th>内容</th></tr></thead><tbody><tr><td>会话</td><td><code>session-demo</code></td></tr><tr><td>创建时间</td><td>2026-01-02 11:04</td></tr><tr><td>模型</td><td><code>deepseek-official/deepseek-flash</code></td></tr><tr><td>工作目录</td><td><code>/srv/demo/kuramoto-sim</code></td></tr><tr><td>预设</td><td><code>standard</code></td></tr><tr><td>规模</td><td>1 轮 · 9 事件</td></tr><tr><td>用量</td><td>输入 4,820 · 输出 613 · 合计 5,433 tokens（1 次模型调用，按事件累计）</td></tr><tr><td>导出时间</td><td>2026-01-02 11:04</td></tr></tbody></table>
+<h2>Turn 1</h2>
+<h3>👤 用户</h3>
+<p>帮我确认 D 维 Kuramoto 模型在临界点附近的磁化率指数，并把关键文献列出来。</p>
+<details>
+<summary>🧠 思考过程</summary>
+<p>先定位 Daido 2015 对磁化率的定义，再确认 γ± 在 D&gt;4 的平均场值与 D=4 的对数修正。</p>
+</details>
+<h3>🤖 助手</h3>
+<p>分三步：先给结论，再给推导，最后列文献。</p>
+<h5>结论</h5>
+<p>平均场下 γ⁻ = γ⁺ = 1，与维度无关；D = 4 处出现对数修正。</p>
+<details>
+<summary>🔧 工具调用：`web_search` · Daido 2015 Kuramoto susceptibility critical exponent</summary>
+<p><strong>参数</strong></p>
+<pre><code class="language-json">{&quot;query&quot;:&quot;Daido 2015 Kuramoto susceptibility critical exponent&quot;}</code></pre>
+<p><strong>结果</strong></p>
+<pre><code class="language-text">3 条结果：
+- Daido, Prog. Theor. Exp. Phys. 2015
+- Hong et al., PRE 2007
+- Coutinho et al., PRE 2013</code></pre>
+</details>
+<details>
+<summary>📝 待办清单</summary>
+<ul><li class="task"><input type="checkbox" disabled checked> 确认指数</li><li class="task"><input type="checkbox" disabled> 整理文献列表</li></ul>
+</details>
+</main>
+<script>(function () {
+  var button = document.getElementById('toggle-details');
+  if (!button) return;
+  button.addEventListener('click', function () {
+    var sections = document.querySelectorAll('details');
+    var anyClosed = false;
+    sections.forEach(function (section) { if (!section.open) anyClosed = true; });
+    sections.forEach(function (section) { section.open = anyClosed; });
+    button.textContent = anyClosed ? '全部折叠' : '全部展开';
+  });
+})();</script>
+</body>
+</html>

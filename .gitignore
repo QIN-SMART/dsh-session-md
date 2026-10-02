@@ -1,0 +1,10 @@
+# 运行/构建产物
+.tmp/
+node_modules/
+exports/
+*.log
+.DS_Store
+Thumbs.db
+
+# 真实界面检查的截图会拍到本机真实会话标题，不要提交
+docs/real-ui*.png

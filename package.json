@@ -1,0 +1,71 @@
+{
+  "name": "dsh-session-md",
+  "version": "0.1.0",
+  "description": "DeepSeek Harness plugin: export a session as human-readable Markdown or a self-contained HTML page — full / handoff / readable / audit presets, one-click download from the Session Header.",
+  "type": "module",
+  "main": "index.mjs",
+  "exports": {
+    ".": "./index.mjs",
+    "./client": "./lib/client.js",
+    "./locale/*.json": "./locale/*.json",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "index.mjs",
+    "lib/render.mjs",
+    "lib/html.mjs",
+    "lib/client.js",
+    "cordis.patch.yml",
+    "icon.svg",
+    "locale/*.json",
+    "README.md",
+    "README_EN.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "dsh": {
+    "manifestVersion": 1,
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "inject": [
+        "@deepseek-ai/dsh-client-locale",
+        "@deepseek-ai/dsh-client-ui-conversation"
+      ],
+      "platform": "web"
+    }
+  },
+  "scripts": {
+    "test": "node --test test/verify.mjs",
+    "verify": "node --test test/verify.mjs",
+    "ci": "node --test test/verify.mjs && node scripts/render-test.mjs && node scripts/client-test.mjs && node scripts/hotplug-test.mjs && node scripts/plugin-smoke.mjs && node scripts/render-check.mjs && node scripts/compose-check.mjs",
+    "check": "npm run ci",
+    "dump": "node scripts/dump.mjs",
+    "publish:github": "node tools/publish-to-github.mjs"
+  },
+  "keywords": [
+    "deepseek-harness",
+    "dsh",
+    "dsh-plugin",
+    "markdown",
+    "export",
+    "session",
+    "html",
+    "conversation"
+  ],
+  "license": "MIT",
+  "icon": "./icon.svg",
+  "engines": {
+    "node": "^22.19.0 || >=24"
+  },
+  "author": "QIN-SMART",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/QIN-SMART/dsh-session-md.git"
+  },
+  "homepage": "https://github.com/QIN-SMART/dsh-session-md#readme",
+  "bugs": {
+    "url": "https://github.com/QIN-SMART/dsh-session-md/issues"
+  }
+}

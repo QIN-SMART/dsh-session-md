@@ -1,0 +1,10 @@
+# dsh-session-md bundle layer.
+#
+# `insert` adds this plugin's row. `name` is resolved through the profile's
+# node_modules; it matches this package's own name, so
+# `dsh plugin --profile <p> add dsh-session-md` registers the row automatically.
+#
+# The plugin needs no configuration: every knob is a tool argument.
+- insert:
+    - id: session-md
+      name: dsh-session-md
